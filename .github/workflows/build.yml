@@ -16,11 +16,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x Android-Mod-Menu-5.0/gradlew
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
 
     - name: Build with Gradle
-      run: cd Android-Mod-Menu-5.0 && ./gradlew assembleRelease
+      run: gradle -p Android-Mod-Menu-5.0 assembleRelease
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
