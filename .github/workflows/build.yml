@@ -13,7 +13,7 @@ jobs:
     - name: Unzip Project
       run: unzip Kzin-Mod-Menu.zip
 
-    - name: Fix File Timestamps (CRITICAL FIX)
+    - name: Fix Timestamps
       run: find Kzin-Mod-Menu -exec touch {} +
 
     - name: Set up JDK 17
