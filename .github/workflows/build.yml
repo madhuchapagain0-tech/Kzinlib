@@ -19,11 +19,11 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
-    - name: Build with Gradle
-      run: gradle -p Android-Mod-Menu-5.0 assembleRelease
+    - name: Build Release APK
+      run: gradle assembleRelease
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: Mod-Menu-Output
-        path: Android-Mod-Menu-5.0/app/build/outputs/apk/release/
+        name: Mod-Menu-APK
+        path: app/build/outputs/apk/release/
