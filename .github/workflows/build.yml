@@ -10,25 +10,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Unzip Mod Menu Project
+      run: unzip Kzin-Mod-Menu.zip
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Unzip Project
-      run: |
-        if [ -f "Android-Mod-Menu.zip" ]; then unzip Android-Mod-Menu.zip; fi
-        if [ -f "Android-Mod-Menu-5.0.zip" ]; then unzip Android-Mod-Menu-5.0.zip; fi
-
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
     - name: Build Release APK
       run: |
-        # This command automatically finds the folder containing gradlew
-        PROJECT_DIR=$(find . -name "gradlew" -exec dirname {} \; | head -n 1)
-        cd "$PROJECT_DIR"
+        cd Kzin-Mod-Menu
         chmod +x gradlew
         ./gradlew assembleRelease
 
@@ -36,4 +32,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Mod-Menu-Output
-        path: "**/app/build/outputs/apk/release/*.apk"
+        path: Kzin-Mod-Menu/app/build/outputs/apk/release/
