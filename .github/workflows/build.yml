@@ -23,8 +23,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    # ✅ FIXED: Use v4 and only install platform-tools
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
+      uses: android-actions/setup-android@v4
+      with:
+        packages: 'platform-tools'
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
